@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @forum.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @forum.description %>
+</p>
+
+<ul class="forum_topics">
+  <%= render @forum.topics %>
+</ul> 
+
+<%= form_for([@forum, @topic]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.label :title %><br />
+ 	<%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+ 	<%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+   </div>
+<% end %>
+
+<%= link_to 'Edit', edit_forum_path(@forum) %> |
+<%= link_to 'Back', forums_path %>
