@@ -8,6 +8,7 @@ describe Topic do
   subject { @topic }
   it { should respond_to(:title)}
   it { should respond_to(:body)}
+  it { should respond_to(:permalink)}
 
   describe  "without a title" do
   	before { @topic.title = " "}

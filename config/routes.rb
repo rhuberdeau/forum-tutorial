@@ -1,4 +1,8 @@
 ForumApp::Application.routes.draw do
+  resources :comments
+
+  resources :replies
+
   devise_for :users
 
   resources :forums do

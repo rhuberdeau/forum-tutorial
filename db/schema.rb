@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503020053) do
+ActiveRecord::Schema.define(:version => 20130706205758) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["topic_id"], :name => "index_comments_on_topic_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -30,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130503020053) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "forum_id"
+    t.string   "permalink"
   end
 
   create_table "users", :force => true do |t|
@@ -48,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130503020053) do
     t.datetime "updated_at",                             :null => false
     t.string   "confirmed_at"
     t.string   "confirmation_sent_at"
+    t.string   "name"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
