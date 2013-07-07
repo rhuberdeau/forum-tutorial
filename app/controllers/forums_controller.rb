@@ -1,4 +1,7 @@
 class ForumsController < ApplicationController
+  #Have not added this filter in the tutorial yet
+  #Add this filter during authorization post
+  #before_filter :authenticate_user!, except: [:index, :show]
   # GET /forums
   # GET /forums.json
   def index

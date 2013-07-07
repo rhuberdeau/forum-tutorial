@@ -7,7 +7,7 @@ feature  "topics" do
      @topic = FactoryGirl.create(:topic, user: @user, forum: @forum)
   end
 
-    scenario  "should be viewable in a forum" do
+    scenario  "can be created by users" do
       visit '/users/sign_in'
       fill_in 'user_email', with: 'ted@mail.com'
       fill_in 'user_password', with: 'aaaaaa'
@@ -23,7 +23,7 @@ feature  "topics" do
       end
     end
 
-    scenario "topics link to the topic page" do
+    scenario "link to the topic page" do
       visit '/users/sign_in'
       fill_in 'user_email', with: 'ted@mail.com'
       fill_in 'user_password', with: 'aaaaaa'
@@ -41,7 +41,7 @@ feature  "topics" do
       page.should have_selector('h1', text: "my second topic")
     end
 
-    scenario "user creates a comment" do
+    scenario "can have comments" do
       visit '/users/sign_in'
       fill_in 'user_email', with: 'ted@mail.com'
       fill_in 'user_password', with: 'aaaaaa'

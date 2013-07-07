@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /comments
   # GET /comments.json
   def index
@@ -48,7 +49,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to forum_topic_path(@topic.forum, @topic), notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
-        format.html { render @topic }
+        format.html { render 'topics/show', object: @topic }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
